@@ -1,0 +1,171 @@
+<html lang="pt-br">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Angular Material style sheet -->
+    <!-- Angular Material Icons-->
+    <!-- my style-->
+    <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body ng-app="app" ng-controller="appController" ng-cloak>
+
+    <!-- header card-->
+    <div class="layout-content" layout="column" layout-align="space-between" flex>
+        <md-card class="md-card-slim" layout-align="center center" flex>
+            <md-card-header>
+                <md-card-title layout="row">
+                    <i class="material-icons align-icon md-48">calculate</i>
+                    <h2>Calculadora duas Operações</h2>
+                </md-card-title>
+            </md-card-header>
+        </md-card>
+
+        <!-- info cards -->
+        <div layout="row">
+
+            <!-- algoritmo americano -->
+            <md-card class="md-card" layout-padding flex>
+                <md-card-content>
+                    <div  layout="row" layout-align="start center">
+                        <i class="material-icons  md-48">code</i>
+                        <h4>&nbsp;Algoritmo</h4>
+                    </div>
+
+                    <div layout="row" layout-align="end end">
+                        <span ng-if="operation != undefined" class="info-span">Americano</span>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <!-- operação feita -->
+            <md-card class="md-card" layout-padding flex>
+                <md-card-content>
+                    <div layout="row" layout-align="start center">
+                        <i class="material-icons  md-48">functions</i>
+                        <h4>&nbsp; Operação: </h4>
+                    </div>
+                
+                    <div layout="row" layout-align="end end">
+                        <span ng-if="operation" class="info-span">{{res.n1}} + {{res.n2}} = {{res.sum}}</span>
+                        <span ng-if="!operation && operation != undefined" class="info-span">{{res.n1}} x {{res.n2}} = {{res.multiplication}}</span>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <!-- iterações --> 
+            <md-card class="md-card" layout-padding flex>
+                <md-card-content>
+                    <div layout="row" layout-align="start center">
+                        <i class="material-icons  md-48">repeat</i>
+                        <h4>&nbsp; iterações: </h4>
+                    </div>
+                
+                    <div layout="row" layout-align="end end">
+                        <span ng-if="operation" class="info-span">{{iterations}}</span>
+                        <span ng-if="!operation && operation != undefined" class="info-span">{{iterations}}</span>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <!-- tempo decorrido -->
+            <md-card class="md-card" layout-padding flex>
+                <div layout="row" layout-align="start center">
+                    <i class="material-icons  md-48">schedule</i>
+                    <h4>&nbsp; Tempo do script (ms): </h4>
+                </div>
+                
+                <div layout="row" layout-align="end end">
+                    <span class="info-span">{{time}}</span>
+                </div>
+                </md-card-content>            
+            </md-card>
+        </div>
+
+        <div layout="row" layout-align="center center" flex>
+            <md-card class="md-card" flex>
+                <md-card-header>
+                    <i class="material-icons align-icon">add_circle</i>
+                    <h2>Soma</h2>
+                </md-card-header>
+                <md-card-content layout="column">
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>informe número</label>
+                            <input ng-model="installment.n1" type="text" flex>
+                        </md-input-container>
+                        <md-button class="button-primary button-slim" ng-click="getRandom('sum', 0)">random</md-button>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>informe número</label>
+                            <input ng-model="installment.n2" type="text" flex>
+                        </md-input-container>
+                        <md-button class="button-primary button-slim" ng-click="getRandom('sum', 1)">random</md-button>
+                    </div>
+                </md-card-content>
+
+                <md-actions layout="row" layout-align="end end">
+                    <md-button class="button-primary" ng-click="sum(installment.n1, installment.n2)">
+                        mandar bala!
+                    </md-button>
+                </md-actions>
+            </md-card>
+
+            <md-card class="md-card" flex>
+                <md-card-header>
+                    <i class="material-icons align-icon multiplication-icon">add_circle</i>
+                    <h2>Multiplicação</h2>
+                </md-card-header>
+                <md-card-content layout="column">
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>informe número</label>
+                            <input ng-model="factor.n1" type="text" flex>
+                        </md-input-container>
+                        <md-button class="button-primary button-slim" ng-click="getRandom('mult', 0)">random</md-button>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>informe número</label>
+                            <input ng-model="factor.n2" type="text" flex>
+                        </md-input-container>
+                        <md-button class="button-primary button-slim" ng-click="getRandom('mult', 1)">random</md-button>
+                    </div>
+
+                <md-card-actions layout="row" layout-align="end end">
+                    <md-button class="button-primary" ng-click="multiplication(factor.n1, factor.n2)">
+                        mandar bala!
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+    <!-- ajudantes -->
+    <!-- algoritmo das operações -->
+    <!-- script da controller  -->
+    <script src="script/helper/helper.js"></script>
+    <script src="script/algorithm/algorithm.js"></script>
+    <script src="script/script.js"></script>
+
+</body>
+
+</html>

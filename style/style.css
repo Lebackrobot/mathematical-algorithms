@@ -1,0 +1,95 @@
+body {
+    background-color: #141b2d;
+    color: #e6e7ea;
+}
+
+.index {
+    font-size: 9px;
+    position: absolute;
+    height:100px;
+}
+
+.container-v2 {
+    margin-top: 50vh;
+    margin-left:5vw;
+}
+
+.layout-content {
+    min-height:  100vh;
+}
+.layout-content h2 {
+    color: #e6e7ea;
+}
+
+.md-card {
+    background-color: #1f2940;
+    color: #e6e7ea;
+}
+
+.md-card-info {
+    background-color: #1f2940;
+    color: #e6e7ea;
+    max-height: 50px;
+}
+
+.md-card-slim {
+    background-color: #1f2940;
+    color: #e6e7ea;
+    max-height: 100px; 
+}
+
+.md-card-algorithm {
+    background-color: #141b2d;
+    color: #e6e7ea;
+}
+
+.align-icon {
+    margin-top: 22px;
+    margin-right: 22px;
+}
+
+.align-info-icon {
+    margin-top: 22px;
+    margin-right: 22px;
+}
+
+.align-toolbar-icon {
+    margin-right:5px;
+}
+
+.md-list-item-icon {
+    margin-left: 50px;
+}
+
+.md-48 {
+    font-size: 35px;
+}
+
+.md-button {
+    background-color:#141b2d!important;
+    color: #e6e7ea;
+
+}
+
+.button-slim {
+    margin-top: 15px;
+    max-height: 10px;
+    margin-left: 0;
+}
+md-toolbar {
+    background-color: #1f2940!important;
+    color: #e6e7ea;
+}
+
+/* input */
+.md-input {
+    color: white!important;
+}
+
+.multiplication-icon {
+    transform: rotate(45deg);
+}
+
+.info-span {
+    color:#020714;
+}
